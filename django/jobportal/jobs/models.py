@@ -14,6 +14,9 @@ class SubmitJob(models.Model):
     location = models.CharField('Location',default='',max_length=255)
     time_employment = models.CharField(default='',max_length=200)
     
+    
+    def __str__(self) -> str:
+        return self.company_name
 
 class ApplyJob(models.Model):
     job = models.ForeignKey(SubmitJob, on_delete=models.CASCADE)
@@ -22,3 +25,6 @@ class ApplyJob(models.Model):
     employee_website = models.CharField('Website/link', default='', max_length=255)
     employee_cv = models.FileField('Upload your CV here')
     employee_coverletter = models.CharField('Coverletter', default='', max_length=255)
+
+    def __str__(self) -> str:
+        return self.employee_name
