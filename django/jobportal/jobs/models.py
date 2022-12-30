@@ -6,6 +6,7 @@ from django.db.models import Model
 
 class SubmitJob(models.Model):
     company_name = models.CharField(default='', max_length=255)
+    company_img = models.ImageField('Company Image', default='')
     job_vacancy = models.CharField(default='', max_length=255)
     job_category = models.CharField(default='', max_length=255)
     pub_date = models.DateTimeField('date published', auto_now_add=False, blank=True)

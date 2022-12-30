@@ -11,7 +11,7 @@ def index (request):
     jobs = SubmitJob.objects.all()
     context = {
         'jobs': jobs,
-        'title': 'Find a Job',
+        'title': 'Job Board',
     }
     return render(request, template,context)
 
@@ -85,5 +85,12 @@ def contact (request):
     }
     return render(request, template,context)
 
+#job_vacant
 def detail(request, job_id):
-    return HttpResponse(f"You are looking for job {job_id}")
+    template = "job_detail_{{job_id}}.html"
+    jobs = SubmitJob.objects.get(pk=job_id)
+    context = {
+        'jobs': jobs,
+        'title': 'Find a Job',
+    }
+    return render(request, template,context)    

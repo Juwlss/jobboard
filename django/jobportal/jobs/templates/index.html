@@ -114,7 +114,7 @@
             </div>
         </div>
         <div class="ilstration_img wow fadeInRight d-none d-lg-block text-right" data-wow-duration="1s" data-wow-delay=".2s">
-            <img src="img/banner/illustration.png" alt="">
+            <img src="{% static 'img/banner/illustration.png'%}" alt="">
         </div>
     </div>
     <!-- slider_area_end -->
@@ -180,7 +180,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section_title mb-40">
-                        <h3>Popolar Categories</h3>
+                        <h3>Popular Categories</h3>
                     </div>
                 </div>
             </div>
@@ -255,11 +255,48 @@
             </div>
             <div class="job_lists">
                 <div class="row">
-                    <div class="col-lg-12 col-md-12">
+                    
+                    <ol type="A">
+                        {% for job in jobs %}
+
+                        <div class="col-lg-12 col-md-12">
+                            <div class="single_jobs white-bg d-flex justify-content-between">
+                                <div class="jobs_left d-flex align-items-center">
+                                    <div class="thumb">
+                                        <img src="{{job.company_img.url}}" height="50" width="50">
+                                    </div>
+                                    <div class="jobs_conetent">
+                                        <a href="job_details.html"><h4>{{job.company_name}} ({{job.job_vacancy}})</h4></a>
+                                        <div class="links_locat d-flex align-items-center">
+                                            <div class="location">
+                                                <p> <i class="fa fa-map-marker"></i> {{job.location}}</p>
+                                            </div>
+                                            <div class="location">
+                                                <p> <i class="fa fa-clock-o"></i> {{job.time_employment}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="jobs_right">
+                                    <div class="apply_now">
+                                        <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
+                                        <a href="job_details.html" class="boxed-btn3">Apply Now</a>
+                                    </div>
+                                    <div class="date">
+                                        <p>Date line: {{job.pub_date}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            {% comment %} <li><a href=""> {{job.company_name}}</a> </br> {{job.pub_date}}</li> {% endcomment %}
+                        {% endfor %}
+                    </ol>
+
+                    {% comment %} <div class="col-lg-12 col-md-12">
                         <div class="single_jobs white-bg d-flex justify-content-between">
                             <div class="jobs_left d-flex align-items-center">
                                 <div class="thumb">
-                                    <img src="img/svg_icon/1.svg" alt="">
+                                    <img src="{% static 'img/svg_icon/1.svg' %}" alt="">
                                 </div>
                                 <div class="jobs_conetent">
                                     <a href="job_details.html"><h4>Software Engineer</h4></a>
@@ -288,7 +325,7 @@
                         <div class="single_jobs white-bg d-flex justify-content-between">
                             <div class="jobs_left d-flex align-items-center">
                                 <div class="thumb">
-                                    <img src="img/svg_icon/2.svg" alt="">
+                                    <img src="{% static 'img/svg_icon/2.svg' %}" alt="">
                                 </div>
                                 <div class="jobs_conetent">
                                     <a href="job_details.html"><h4>Digital Marketer</h4></a>
@@ -317,7 +354,7 @@
                         <div class="single_jobs white-bg d-flex justify-content-between">
                             <div class="jobs_left d-flex align-items-center">
                                 <div class="thumb">
-                                    <img src="img/svg_icon/3.svg" alt="">
+                                    <img src="{% static 'img/svg_icon/3.svg' %}" alt="">
                                 </div>
                                 <div class="jobs_conetent">
                                     <a href="job_details.html"><h4>Wordpress Developer</h4></a>
@@ -346,7 +383,7 @@
                         <div class="single_jobs white-bg d-flex justify-content-between">
                             <div class="jobs_left d-flex align-items-center">
                                 <div class="thumb">
-                                    <img src="img/svg_icon/4.svg" alt="">
+                                    <img src="{% static 'img/svg_icon/4.svg' %}" alt="">
                                 </div>
                                 <div class="jobs_conetent">
                                     <a href="job_details.html"><h4>Visual Designer</h4></a>
@@ -375,7 +412,7 @@
                         <div class="single_jobs white-bg d-flex justify-content-between">
                             <div class="jobs_left d-flex align-items-center">
                                 <div class="thumb">
-                                    <img src="img/svg_icon/5.svg" alt="">
+                                    <img src="{% static 'img/svg_icon/5.svg' %}" alt="">
                                 </div>
                                 <div class="jobs_conetent">
                                     <a href="job_details.html"><h4>Software Engineer</h4></a>
@@ -404,7 +441,7 @@
                         <div class="single_jobs white-bg d-flex justify-content-between">
                             <div class="jobs_left d-flex align-items-center">
                                 <div class="thumb">
-                                    <img src="img/svg_icon/1.svg" alt="">
+                                    <img src="{% static 'img/svg_icon/6.svg' %}" alt="">
                                 </div>
                                 <div class="jobs_conetent">
                                     <a href="job_details.html"><h4>Creative Designer</h4></a>
@@ -428,7 +465,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> {% endcomment %}
                 </div>
             </div>
         </div>
@@ -450,91 +487,91 @@
                     <div class="candidate_active owl-carousel">
                         <div class="single_candidates text-center">
                             <div class="thumb">
-                                <img src="img/candiateds/1.png" alt="">
+                                <img src="{% static 'img/candiateds/1.png' %}" alt="">
                             </div>
                             <a href="#"><h4>Markary Jondon</h4></a>
                             <p>Software Engineer</p>
                         </div>
                         <div class="single_candidates text-center">
                             <div class="thumb">
-                                <img src="img/candiateds/2.png" alt="">
+                                <img src="{% static 'img/candiateds/2.png' %}" alt="">
                             </div>
                             <a href="#"><h4>Markary Jondon</h4></a>
                             <p>Software Engineer</p>
                         </div>
                         <div class="single_candidates text-center">
                             <div class="thumb">
-                                <img src="img/candiateds/3.png" alt="">
+                                <img src="{% static 'img/candiateds/3.png' %}" alt="">
                             </div>
                             <a href="#"><h4>Markary Jondon</h4></a>
                             <p>Software Engineer</p>
                         </div>
                         <div class="single_candidates text-center">
                             <div class="thumb">
-                                <img src="img/candiateds/4.png" alt="">
+                                <img src="{% static 'img/candiateds/4.png' %}" alt="">
                             </div>
                             <a href="#"><h4>Markary Jondon</h4></a>
                             <p>Software Engineer</p>
                         </div>
                         <div class="single_candidates text-center">
                             <div class="thumb">
-                                <img src="img/candiateds/5.png" alt="">
+                                <img src="{% static 'img/candiateds/5.png' %}" alt="">
                             </div>
                             <a href="#"><h4>Markary Jondon</h4></a>
                             <p>Software Engineer</p>
                         </div>
                         <div class="single_candidates text-center">
                             <div class="thumb">
-                                <img src="img/candiateds/6.png" alt="">
+                                <img src="{% static 'img/candiateds/6.png' %}" alt="">
                             </div>
                             <a href="#"><h4>Markary Jondon</h4></a>
                             <p>Software Engineer</p>
                         </div>
                         <div class="single_candidates text-center">
                             <div class="thumb">
-                                <img src="img/candiateds/7.png" alt="">
+                                <img src="{% static 'img/candiateds/7.png' %}" alt="">
                             </div>
                             <a href="#"><h4>Markary Jondon</h4></a>
                             <p>Software Engineer</p>
                         </div>
                         <div class="single_candidates text-center">
                             <div class="thumb">
-                                <img src="img/candiateds/8.png" alt="">
+                                <img src="{% static 'img/candiateds/8.png' %}" alt="">
                             </div>
                             <a href="#"><h4>Markary Jondon</h4></a>
                             <p>Software Engineer</p>
                         </div>
                         <div class="single_candidates text-center">
                             <div class="thumb">
-                                <img src="img/candiateds/9.png" alt="">
+                                <img src="{% static 'img/candiateds/9.png' %}" alt="">
                             </div>
                             <a href="#"><h4>Markary Jondon</h4></a>
                             <p>Software Engineer</p>
                         </div>
                         <div class="single_candidates text-center">
                             <div class="thumb">
-                                <img src="img/candiateds/9.png" alt="">
+                                <img src="{% static 'img/candiateds/9.png' %}" alt="">
                             </div>
                             <a href="#"><h4>Markary Jondon</h4></a>
                             <p>Software Engineer</p>
                         </div>
                         <div class="single_candidates text-center">
                             <div class="thumb">
-                                <img src="img/candiateds/10.png" alt="">
+                                <img src="{% static 'img/candiateds/10.png' %}" alt="">
                             </div>
                             <a href="#"><h4>Markary Jondon</h4></a>
                             <p>Software Engineer</p>
                         </div>
                         <div class="single_candidates text-center">
                             <div class="thumb">
-                                <img src="img/candiateds/3.png" alt="">
+                                <img src="{% static 'img/candiateds/3.png' %}" alt="">
                             </div>
                             <a href="#"><h4>Markary Jondon</h4></a>
                             <p>Software Engineer</p>
                         </div>
                         <div class="single_candidates text-center">
                             <div class="thumb">
-                                <img src="img/candiateds/4.png" alt="">
+                                <img src="{% static 'img/candiateds/4.png' %}" alt="">
                             </div>
                             <a href="#"><h4>Markary Jondon</h4></a>
                             <p>Software Engineer</p>
@@ -564,7 +601,7 @@
                 <div class="col-lg-4 col-xl-3 col-md-6">
                     <div class="single_company">
                         <div class="thumb">
-                            <img src="img/svg_icon/5.svg" alt="">
+                            <img src="{% static 'img/svg_icon/5.svg' %}" alt="">
                         </div>
                         <a href="jobs.html"><h3>Snack Studio</h3></a>
                         <p> <span>50</span> Available position</p>
@@ -573,7 +610,7 @@
                 <div class="col-lg-4 col-xl-3 col-md-6">
                     <div class="single_company">
                         <div class="thumb">
-                            <img src="img/svg_icon/4.svg" alt="">
+                            <img src="{% static 'img/svg_icon/4.svg' %}" alt="">
                         </div>
                         <a href="jobs.html"><h3>Snack Studio</h3></a>
                         <p> <span>50</span> Available position</p>
@@ -582,7 +619,7 @@
                 <div class="col-lg-4 col-xl-3 col-md-6">
                     <div class="single_company">
                         <div class="thumb">
-                            <img src="img/svg_icon/3.svg" alt="">
+                            <img src="{% static 'img/svg_icon/3.svg' %}" alt="">
                         </div>
                         <a href="jobs.html"><h3>Snack Studio</h3></a>
                         <p> <span>50</span> Available position</p>
@@ -591,7 +628,7 @@
                 <div class="col-lg-4 col-xl-3 col-md-6">
                     <div class="single_company">
                         <div class="thumb">
-                            <img src="img/svg_icon/1.svg" alt="">
+                            <img src="{% static 'img/svg_icon/1.svg' %}" alt="">
                         </div>
                         <a href="jobs.html"><h3>Snack Studio</h3></a>
                         <p> <span>50</span> Available position</p>
@@ -640,7 +677,7 @@
                                 <div class="col-lg-11">
                                     <div class="single_testmonial d-flex align-items-center">
                                         <div class="thumb">
-                                            <img src="img/testmonial/author.png" alt="">
+                                            <img src="{% static 'img/testmonial/author.png'%}" alt="">
                                             <div class="quote_icon">
                                                 <i class="Flaticon flaticon-quote"></i>
                                             </div>
@@ -658,7 +695,7 @@
                                 <div class="col-lg-11">
                                     <div class="single_testmonial d-flex align-items-center">
                                         <div class="thumb">
-                                            <img src="img/testmonial/author.png" alt="">
+                                            <img src="{% static 'img/testmonial/author.png'%}" alt="">
                                             <div class="quote_icon">
                                                 <i class=" Flaticon flaticon-quote"></i>
                                             </div>
@@ -676,7 +713,7 @@
                                 <div class="col-lg-11">
                                     <div class="single_testmonial d-flex align-items-center">
                                         <div class="thumb">
-                                            <img src="img/testmonial/author.png" alt="">
+                                            <img src="{% static 'img/testmonial/author.png'%}" alt="">
                                             <div class="quote_icon">
                                                 <i class="Flaticon flaticon-quote"></i>
                                             </div>
@@ -706,7 +743,7 @@
                         <div class="footer_widget wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
                             <div class="footer_logo">
                                 <a href="#">
-                                    <img src="img/logo.png" alt="">
+                                    <img src="{% static 'img/logo.png'%}" alt="">
                                 </a>
                             </div>
                             <p>
@@ -803,36 +840,36 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
     <!-- link that opens popup -->
     <!-- JS here -->
-    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/isotope.pkgd.min.js"></script>
-    <script src="js/ajax-form.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-    <script src="js/scrollIt.js"></script>
-    <script src="js/jquery.scrollUp.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/nice-select.min.js"></script>
-    <script src="js/jquery.slicknav.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/gijgo.min.js"></script>
+    <script src="{%static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery-1.12.4.min.js'%}"></script>
+    <script src="{% static 'js/popper.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'js/owl.carousel.min.js'%}"></script>
+    <script src="{% static 'js/isotope.pkgd.min.js'%}"></script>
+    <script src="{% static 'js/ajax-form.js'%}"></script>
+    <script src="{% static 'js/waypoints.min.js'%}"></script>
+    <script src="{% static 'js/jquery.counterup.min.js'%}"></script>
+    <script src="{% static 'js/imagesloaded.pkgd.min.js'%}"></script>
+    <script src="{% static 'js/scrollIt.js'%}"></script>
+    <script src="{% static 'js/jquery.scrollUp.min.js'%}"></script>
+    <script src="{% static 'js/wow.min.js'%}"></script>
+    <script src="{% static 'js/nice-select.min.js'%}"></script>
+    <script src="{% static 'js/jquery.slicknav.min.js'%}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js'%}"></script>
+    <script src="{% static 'js/plugins.js'%}"></script>
+    <script src="{% static 'js/gijgo.min.js'%}"></script>
 
 
 
     <!--contact js-->
-    <script src="js/contact.js"></script>
-    <script src="js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/jquery.form.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
-    <script src="js/mail-script.js"></script>
+    <script src="{% static 'js/contact.js'%}"></script>
+    <script src="{% static 'js/jquery.ajaxchimp.min.js'%}"></script>
+    <script src="{% static 'js/jquery.form.js'%}"></script>
+    <script src="{% static 'js/jquery.validate.min.js'%}"></script>
+    <script src="{% static 'js/mail-script.js'%}"></script>
 
 
-    <script src="js/main.js"></script>
+    <script src="{% static 'js/main.js'%}"></script>
 </body>
 
 </html>
