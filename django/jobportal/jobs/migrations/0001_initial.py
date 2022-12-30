@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
                 ('employee_name', models.CharField(default='', max_length=255, verbose_name='Name')),
                 ('employee_email', models.EmailField(default='', max_length=255, verbose_name='Email')),
                 ('employee_website', models.CharField(default='', max_length=255, verbose_name='Website/link')),
-                ('employee_cv', models.FileField(upload_to='', verbose_name='Upload your CV here')),
+                ('employee_cv', models.FileField(upload_to='', verbose_name='Upload your Resume here')),
                 ('employee_coverletter', models.CharField(default='', max_length=255, verbose_name='Coverletter')),
                 ('job', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='jobs.submitjob')),
             ],

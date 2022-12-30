@@ -53,13 +53,12 @@
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a href="index.html">home</a></li>
-                                            <li><a href="jobs.html">Browse Job</a></li>
+                                            <li><a href="{% url 'jobs:index'%}">home</a></li>
+                                            <li><a href="{% url 'jobs:jobs'%}">Browse Job</a></li>
                                             <li><a href="#">pages <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
-                                                    <li><a href="candidate.html">Candidates </a></li>
-                                                    <li><a href="job_details.html">job details </a></li>
-                                                    <li><a href="elements.html">elements</a></li>
+                                                    <li><a href="{% url 'jobs:candidate'%}">Candidates </a></li>
+                                                    <li><a href="{% url 'jobs:elements'%}">elements</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="#">blog <i class="ti-angle-down"></i></a>
@@ -117,16 +116,16 @@
                         <div class="single_jobs white-bg d-flex justify-content-between">
                             <div class="jobs_left d-flex align-items-center">
                                 <div class="thumb">
-                                    <img src="{% static 'img/svg_icon/1.svg'%}" alt="">
+                                    <img src="{{jobs.company_img.url}}" height="50" width="50">
                                 </div>
                                 <div class="jobs_conetent">
-                                    <a href="#"><h4>Software Engineer</h4></a>
+                                    <a href="#"><h4>{{jobs.company_name}}</h4></a>
                                     <div class="links_locat d-flex align-items-center">
                                         <div class="location">
-                                            <p> <i class="fa fa-map-marker"></i> California, USA</p>
+                                            <p> <i class="fa fa-map-marker"></i> {{jobs.location}}</p>
                                         </div>
                                         <div class="location">
-                                            <p> <i class="fa fa-clock-o"></i> Part-time</p>
+                                            <p> <i class="fa fa-clock-o"></i> {{jobs.time_employment}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -141,10 +140,10 @@
                     <div class="descript_wrap white-bg">
                         <div class="single_wrap">
                             <h4>Job description</h4>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>
-                            <p>Variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>
+                            <p>{{jobs.job_description}}</p>
+                           
                         </div>
-                        <div class="single_wrap">
+                        {% comment %} <div class="single_wrap">
                             <h4>Responsibility</h4>
                             <ul>
                                 <li>The applicants should have experience in the following areas.
@@ -153,25 +152,21 @@
                                 <li>Leadership, analytical, and problem-solving abilities.</li>
                                 <li>Should have vast knowledge in IAS/ IFRS, Company Act, Income Tax, VAT.</li>
                             </ul>
-                        </div>
+                        </div> {% endcomment %}
                         <div class="single_wrap">
                             <h4>Qualifications</h4>
                             <ul>
-                                <li>The applicants should have experience in the following areas.
-                                </li>
-                                <li>Have sound knowledge of commercial activities.</li>
-                                <li>Leadership, analytical, and problem-solving abilities.</li>
-                                <li>Should have vast knowledge in IAS/ IFRS, Company Act, Income Tax, VAT.</li>
+                                {{jobs.job_qualification}}
                             </ul>
                         </div>
-                        <div class="single_wrap">
+                        {% comment %} <div class="single_wrap">
                             <h4>Benefits</h4>
                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>
-                        </div>
+                        </div> {% endcomment %}
                     </div>
                     <div class="apply_job_form white-bg">
                         <h4>Apply for the job</h4>
-                        <form action="#">
+                        <form action="#" method="post" >
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="input_field">
@@ -221,11 +216,11 @@
                         </div>
                         <div class="job_content">
                             <ul>
-                                <li>Published on: <span>12 Nov, 2019</span></li>
-                                <li>Vacancy: <span>2 Position</span></li>
-                                <li>Salary: <span>50k - 120k/y</span></li>
-                                <li>Location: <span>California, USA</span></li>
-                                <li>Job Nature: <span> Full-time</span></li>
+                                <li>Published on: <span>{{jobs.pub_date}}</span></li>
+                                <li>Vacancy: <span>{{jobs.job_vacancy}}</span></li>
+                                <li>Salary: <span>{{jobs.salary}}</span></li>
+                                <li>Location: <span>{{jobs.location}}</span></li>
+                                <li>Job Nature: <span> {{jobs.time_employment}}</span></li>
                             </ul>
                         </div>
                     </div>

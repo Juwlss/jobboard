@@ -11,6 +11,7 @@ class SubmitJob(models.Model):
     job_category = models.CharField(default='', max_length=255)
     pub_date = models.DateTimeField('date published', auto_now_add=False, blank=True)
     job_description = models.CharField('Job Description',default='', max_length=255)
+    job_qualification = models.CharField('Job Qualification',default='', max_length=255)
     salary = models.IntegerField(default=0)
     location = models.CharField('Location',default='',max_length=255)
     time_employment = models.CharField(default='',max_length=200)
@@ -24,7 +25,7 @@ class ApplyJob(models.Model):
     employee_name = models.CharField('Name', default='', max_length=255)
     employee_email = models.EmailField('Email', default='', max_length=255)
     employee_website = models.CharField('Website/link', default='', max_length=255)
-    employee_cv = models.FileField('Upload your CV here')
+    employee_cv = models.FileField('Upload your Resume here')
     employee_coverletter = models.CharField('Coverletter', default='', max_length=255)
 
     def __str__(self) -> str:

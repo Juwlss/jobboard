@@ -35,15 +35,36 @@ def candidate (request):
     }
     return render(request, template,context)
 
+
 #job details page
-def job_details (request):
+def job_details(request, job_id):
     template = "job_details.html"
+    jobs = SubmitJob.objects.get(pk=job_id)
+    context = {
+        'jobs': jobs,
+        'title': 'Job Details',
+    }
+    return render(request, template,context)
+
+#job details page
+def job_apply(request, job_id):
+    template = "jobs.html"
     jobs = SubmitJob.objects.all()
     context = {
         'jobs': jobs,
-        'title': 'Find a Job',
+        'title': 'Job Details',
     }
-    return render(request, template,context)
+    return render(request, template,context) 
+
+# #job details page
+# def detail (request, job_id):
+#     template = "job_details.html"
+#     jobs = SubmitJob.objects.get(pk=job_id)
+#     context = {
+#         'jobs': jobs,
+#         'title': 'Find a Job',
+#     }
+#     return render(request, template,context)
 
 #elements page
 def elements (request):
@@ -85,12 +106,4 @@ def contact (request):
     }
     return render(request, template,context)
 
-#job_vacant
-def detail(request, job_id):
-    template = "job_detail_{{job_id}}.html"
-    jobs = SubmitJob.objects.get(pk=job_id)
-    context = {
-        'jobs': jobs,
-        'title': 'Find a Job',
-    }
-    return render(request, template,context)    
+   
