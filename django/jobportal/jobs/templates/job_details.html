@@ -44,7 +44,7 @@
                         <div class="row align-items-center">
                             <div class="col-xl-3 col-lg-2">
                                 <div class="logo">
-                                    <a href="index.html">
+                                    <a href="{% url 'jobs:index'%}">
                                         <img src="{% static 'img/logo.png'%}" alt="">
                                     </a>
                                 </div>
@@ -100,7 +100,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text">
-                        <h3>Software Engineer</h3>
+                        <h3>{{jobs.job_vacancy}}</h3>
                     </div>
                 </div>
             </div>
@@ -166,21 +166,22 @@
                     </div>
                     <div class="apply_job_form white-bg">
                         <h4>Apply for the job</h4>
-                        <form action="#" method="post" >
+                        <form action="." method="post" >
+                            {% csrf_token %}
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="input_field">
-                                        <input type="text" placeholder="Your name">
+                                        <input type="text" name= "employee_name" placeholder="Your name">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input_field">
-                                        <input type="text" placeholder="Email">
+                                        <input type="text" name= "employee_email" placeholder="Email">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="input_field">
-                                        <input type="text" placeholder="Website/Portfolio link">
+                                        <input type="text" name= "employee_website" placeholder="Website/Portfolio link">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -190,14 +191,14 @@
                                           </button>
                                         </div>
                                         <div class="custom-file">
-                                          <input type="file" class="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
-                                          <label class="custom-file-label" for="inputGroupFile03">Upload Resume</label>
+                                          <input type="file" class="custom-file-input" name="employee_cv" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
+                                          <label class="custom-file-label" id="filename" for="inputGroupFile03"> </label>
                                         </div>
                                       </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="input_field">
-                                        <textarea name="#" id="" cols="30" rows="10" placeholder="Coverletter"></textarea>
+                                        <textarea name="employee_coverletter" id="" cols="30" rows="10" placeholder="Coverletter"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -403,6 +404,25 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
     <script src="js/main.js"></script>
+
+    <script>
+        {% comment %} function setfilename(val)
+        {
+          var fileName = val.substr(val.lastIndexOf("\\")+1, val.length);
+          document.getElementById("filename").value = fileName;
+        } {% endcomment %}
+
+        $(document).ready(function(){
+            $('#inputGroupFile03').on('change',function(){
+                //get the file name
+                var fileName = $(this).val();
+                //replace the "Choose a file" label
+                $(this).next('.custom-file-label').html(fileName);
+            })
+          })
+    </script>
+
+   
 </body>
 
 </html>
